@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>ReaperMod</AssemblyName>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>11</LangVersion>
+    <RootNamespace>ReaperMod</RootNamespace>
+    
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+    </RestoreAdditionalProjectSources>
+    
+    <Title>ReaperMod</Title>
+    
+    <Company>Rilay Mods</Company>
+    
+    <Description>Mod to change reaper sizes and more
+
+</Description>
+    
+    <Copyright>Copyright © 2023</Copyright>
+    
+    <PackageIcon>a8c1af780c38a5ab37286539a7a85a4dbaa98137_00.jpg</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Users\gerbe\Downloads\a8c1af780c38a5ab37286539a7a85a4dbaa98137_00.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
+    <PackageReference Include="Subnautica.Nautilus" Version="1.0.0-pre.23" />
+    <PackageReference Include="UnityEngine.Modules" Version="2019.4.36" IncludeAssets="compile" />
+    <PackageReference Include="Subnautica.GameLibs" Version="71288.0.0-r.0" />
+    <PackageReference Include="PolySharp" Version="1.13.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="mkdir &quot;C:\Program Files\Epic Games\Subnautica\BepInEx\plugins\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetPath)&quot; &quot;C:\Program Files\Epic Games\Subnautica\BepInEx\plugins\$(TargetName)&quot;" />
+  </Target>
+</Project>
