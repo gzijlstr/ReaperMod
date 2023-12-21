@@ -1,28 +1,29 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
-using HarmonyLib;
+
 using Nautilus.Handlers;
 using Nautilius.Options;
 using Nautilius.Json;
 using Nautilus.Options.Attributes;
+
+using HarmonyLib;
 using UnityEngine;
-using System.Collections;
-using System.IO;
-using System;
+
 
 namespace Rilay.ReaperMod
 {
-
-
-
-
-
-    [Menu("Knife Damage Mod")]
+    [Menu("Reaper Options ")]
     public class ReaperModOptions : ModOptions
     {
+        public ReaperModOptions() : base("Reaper Options")
+        {
 
-        [Slider("Reaper Size", 1.0f, 100.0f, DefaultValue = 1.0f, Format = "{0:F2}")]
+            [Slider("Reaper Slider", 1.0f, 100.0f, DefaultValue = 1.0f, Format = "{0:F2}")]
 
+            OptionsPanelHandler.RegisterModOptions(this);
+
+            
+        }
     }
 }

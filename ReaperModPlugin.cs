@@ -31,12 +31,11 @@ namespace Rilay.ReaperMod
 
         public static ManualLogSource Log;
 
-        // declaring mod options from ReaperModOptions.cs
         public static ReaperModOptions ModOptions;
 
         private void Awake()
         {
-            ModOptions = OptionsPanelHandler.RegisterModOptions<ModOptions>();
+            ReaperModOptions = OptionsPanelHandler.RegisterModOptions<ModOptions>();
 
             Harmony.PatchAll();
             Logger.LogInfo(PluginName + " " + VersionString + " " + "loaded.");
